@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Javascript and jQuery</title>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<link rel="Stylesheet" href="css/styles.css"/>
+			<script>
+				$(document).ready(function(){
+
+					//reads the height of the window and sets it to the sideBar div
+					$("#sideBar").height($(window).height())
+
+					/*
+					This is the first animation sequence.
+					This makes the smiley fade out, then turn it to red and then fades it in.
+					*/
+					$("#smiley").fadeOut(1000, function(){
+						$("#smiley").css({color:"red"}).fadeIn(2000, function(){
+							$("#smiley span").show();
+						});
+					});
+
+					/*
+					This adds a .click() event listener to the <span> inside the <div id="smiley"></div>
+					When clicked it moves the entire div to the .width() of the body and subtract 120 pixels
+					so that the smiley is the only things left in the screen
+					and then change the body's background color to red via .css()
+					*/
+					$("#smiley span").click(function(){
+						$("#smiley span").hide();
+						var xLocation = $("body").width() - 120;
+						$("#smiley").animate({left:"+="+xLocation}, function(){
+							$("body").css({backgroundColor:"#000"});
+							$("#sideBar").animate({left:"+=30%"}, 1000);
+						})
+					});
+					
+
+					//Detect the x and y coordinates of the mouse and add text to the spans
+					$(document).mousemove(function(){
+						$("#xMouse").text("X: "+event.pageX)
+						$("#yMouse").text("Y: "+event.pageY)
+
+					})
+
+				});
+			</script>
+		</head>
+		<body>
+			<div id="sideBar">
+				<span id="xMouse"></span>
+				<br>
+				<span id="yMouse"></span>
+			</div>
+			<div id="smiley">:)
+				<span>Click Me</span>
+			</div>
+		</body>
+	</html>

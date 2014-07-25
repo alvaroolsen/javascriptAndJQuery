@@ -1,0 +1,27 @@
+body, html{
+	padding:0px;
+	margin:0px;
+
+}
+
+#smiley{
+	font-size:120pt;
+	position:absolute;
+	left:0px;
+	z-index:10;
+}
+
+#smiley span{
+
+	display:none;
+}
+
+#sideBar{
+	position:absolute;
+	left:-600px;
+	width:30%;
+	background:#f00;
+	height:100%;
+	min-height:100%;
+	text-align:right;
+}
